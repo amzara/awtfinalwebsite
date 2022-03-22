@@ -4,7 +4,7 @@ include("connection.php");
 include("function.php");
 $user_data = check_login($conn);
 ?>
-
+Hello, <?php echo $user_data['Name']; ?>.
 <h1>Instructions</h1>
 <p>This is a multiple choice question quiz. Select the correct answer and submit it. 
 Extra features : Show correct answer for every question + marks after assessment + hide submit button after user complete(so cannot do multiple times)maybe use jquery on button to just make it disappear. </p>
@@ -48,6 +48,11 @@ if($sa1q2=="b"){
     }
 
 echo "Your total score is " . $marks . "% !";
+
+$sessions = $_SESSION['studName'];
+echo $sessions;
+$query = "UPDATE screcord SET scQuiz1='$marks' WHERE Name = '$sessions'";
+mysqli_query($conn, $query);
 
 echo "<a href='homepage.php'>Click here to return to homepage</a>";
 

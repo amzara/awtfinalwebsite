@@ -65,8 +65,16 @@
                 $pass = $_POST['password'];
 
                 $sql = "INSERT INTO student(Name, Email, Password) VALUES('$name','$email','$pass')";
+                $sql2 = "INSERT INTO screcord(Name) VALUES('$name')";
 
                 if($conn->query($sql)==TRUE){
+                    header('location:studentlogin.php');
+                    echo "<script>alert('Register successful')</script>";
+                }
+                else{
+                    echo "Error: ".$sql. "<br>" .$conn->error;
+                }
+                if($conn->query($sql2)==TRUE){
                     header('location:studentlogin.php');
                     echo "<script>alert('Register successful')</script>";
                 }
