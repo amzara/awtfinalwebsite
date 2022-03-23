@@ -53,7 +53,8 @@ $sessions = $_SESSION['studName'];
 echo $sessions;
 $query = "UPDATE screcord SET scQuiz1='$marks' WHERE Name = '$sessions'";
 mysqli_query($conn, $query);
-
+$query2 = "UPDATE student SET accumulatedMarks= accumulatedMarks + '$marks' WHERE Name = '$sessions'";
+mysqli_query($conn, $query2);
 echo "<a href='homepage.php'>Click here to return to homepage</a>";
 
 

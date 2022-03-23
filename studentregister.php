@@ -66,6 +66,10 @@
 
                 $sql = "INSERT INTO student(Name, Email, Password) VALUES('$name','$email','$pass')";
                 $sql2 = "INSERT INTO screcord(Name) VALUES('$name')";
+                $sql3 = "INSERT INTO mathrecord(Name) VALUES('$name')";
+                $sql4 = "INSERT INTO techrecord(Name) VALUES('$name')";
+                $sql5 = "INSERT INTO engrecord(Name) VALUES('$name')";
+                
 
                 if($conn->query($sql)==TRUE){
                     header('location:studentlogin.php');
@@ -81,7 +85,27 @@
                 else{
                     echo "Error: ".$sql. "<br>" .$conn->error;
                 }
-
+                if($conn->query($sql3)==TRUE){
+                    header('location:studentlogin.php');
+                    echo "<script>alert('Register successful')</script>";
+                }
+                else{
+                    echo "Error: ".$sql. "<br>" .$conn->error;
+                }
+                if($conn->query($sql4)==TRUE){
+                    header('location:studentlogin.php');
+                    echo "<script>alert('Register successful')</script>";
+                }
+                else{
+                    echo "Error: ".$sql. "<br>" .$conn->error;
+                }
+                if($conn->query($sql5)==TRUE){
+                    header('location:studentlogin.php');
+                    echo "<script>alert('Register successful')</script>";
+                }
+                else{
+                    echo "Error: ".$sql. "<br>" .$conn->error;
+                }
                 $conn->close();
             }
         ?>

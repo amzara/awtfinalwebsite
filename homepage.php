@@ -27,13 +27,32 @@ $user_data = check_login($conn);
             nav{
                 background-color: black;
             }
+
+            #test{
+                text-decoration: none;
+                float:right;
+            }
         </style>
         <title>Homepage</title>
     </head>
     <body>     
         <nav>
-            <a href="" style="text-decoration: none; float:right"><button>Marks</button></a>
+            <button id="test">Marks</button>
         </nav>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+     <script>
+$(document).ready(function(){
+  $("#test").click(function(){
+    window.location.replace('marks.php');
+  });
+});
+</script>
+
+
+
+
+
         <br>
         <p>Hello, <?php echo $_SESSION['studName'];?></p>
 
@@ -47,19 +66,19 @@ $user_data = check_login($conn);
             <center><p>Math</p>
             <img src="https://image.shutterstock.com/image-vector/creative-hand-drawn-vector-maths-260nw-461142283.jpg" alt="math"><br><br>
             <a href=""><button>Learn</button></a>
-            <a href=""><button>Quiz</button></a></center>
+            <a href="mathAssessmentSelect.php"><button>Quiz</button></a></center>
         </div>
         <div>
             <center><p>Technology</p>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMA4h6SjRx5IbA44MDnq3OkETL-xyQI52hbg&usqp=CAU" alt="tech"><br><br>
             <a href=""><button>Learn</button></a>
-            <a href=""><button>Quiz</button></a></center>
+            <a href="techAssessmentSelect.php"><button>Quiz</button></a></center>
         </div>
         <div>
             <center><p>Engineering</p>
             <img src="https://c8.alamy.com/comp/2AXJCMK/backgrounds-of-engineering-subjects-technical-illustration-mechanical-engineering-blue-background-points-2AXJCMK.jpg" alt="engineer"><br><br>
             <a href=""><button>Learn</button></a>
-            <a href=""><button>Quiz</button></a></center>
+            <a href="engAssessmentSelect.php"><button>Quiz</button></a></center>
         </div>
     </body>
 </html>
