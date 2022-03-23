@@ -7,7 +7,6 @@ $user_data = check_login($conn);
 Hello, <?php echo $user_data['Name']; ?>.
 <h1>Instructions</h1>
 <p>This is a multiple choice question quiz. Select the correct answer and submit it. 
-Extra features : Show correct answer for every question + marks after assessment + hide submit button after user complete(so cannot do multiple times)maybe use jquery on button to just make it disappear. </p>
 
 <form method="POST">
 <h3>Assesstment 1</h3>
@@ -43,7 +42,8 @@ Extra features : Show correct answer for every question + marks after assessment
 
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-$marks=0;
+    $correctans=0;
+    $marks=0;
 $q1=$_POST["q1"];
 $q2=$_POST["q2"];
 $q3=$_POST["q3"];
@@ -56,33 +56,38 @@ echo $q4;
 
 if($q1=="c"){
 $marks+=25;
+$correctans+=1;
 }
 else{
-echo "Both statements are correct.";
+echo "Question 1: Both statements are correct.<br>";
 }
 
 if($q2=="True"){
 $marks+=25;
+$correctans+=1;
 }
 else{
-echo "All three statement is correct";
+echo "Question 2: All three statement is correct<br>";
 }
 
 if($q3=="True"){
 $marks+=25;
+$correctans+=1;
 }
 else{
-echo "Golden Gate is indeed an example of engineering.";
+echo "Question 3: Golden Gate is indeed an example of engineering.<br>";
 }
 
 if($q4=="d"){
 $marks+=25;
+$correctans+=1;
 }
 else{
-echo "Civil Engineer indeed builds all of the above.";
+echo "Question 4: Civil Engineer indeed builds all of the above.<br>";
 }
     
-
+echo "<br>Score:".$correctans."/4";
+echo "<br>Marks rewarded for this assessment:".$marks;
 
 
 
@@ -95,7 +100,7 @@ $query = "UPDATE engrecord SET engQuiz1='$marks' WHERE Name = '$sessions'";
 mysqli_query($conn, $query);
 $query2 = "UPDATE student SET accumulatedMarks= accumulatedMarks + '$marks' WHERE Name = '$sessions'";
 mysqli_query($conn, $query2);
-echo "<a href='homepage.php'>Click here to return to homepage</a>";
+echo "<br><a href='homepage.php'>Click here to return to homepage</a>";
 
 
 

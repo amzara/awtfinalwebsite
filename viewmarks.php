@@ -1,24 +1,77 @@
+
 <?php 
 session_start();
 include("connection.php");
 include("function.php");
 $user_data = check_login($conn);
 $sessions = $_SESSION['studName'];
-echo $sessions;
+echo "Displaying assessment marks for user ".$sessions;
 ?>
+<html>
+    <head>
+<style>
+.table1{
+width:20%;
+border-collapse:collapse;
+border:1px solid red;
+text-align:center;
+table-layout:fixed;
+width:80%;
+}
+
+.table1 tr,th,td{
+width:60%;
+border-collapse:collapse;
+border:1px solid green;
+text-align:center;
+table-layout:fixed;
+width:80%;
+}
+
+
+
+.table2{
+width:60%;
+border-collapse:collapse;
+border:10px solid blue;
+text-align:center;
+table-layout:fixed;
+width:80%;
+}
+
+.table2 tr,th,td{
+width:60%;
+border-collapse:collapse;
+border:5px solid green;
+text-align:center;
+table-layout:fixed;
+width:80%;
+}
+
+
+
+
+
+
+    </style>
+</head>
+
+
+
+
 
 <?php
-$query = "SELECT Name, accumulatedMarks FROM student WHERE accumulatedMarks!=0 ORDER BY accumulatedMarks DESC";
+$query = "SELECT Name, accumulatedMarks FROM student WHERE accumulatedMarks!='' ORDER BY accumulatedMarks DESC";
 $result = $conn->query($query);
 $ranking=1;
 
 if ($result->num_rows > 0) {
 
-    echo "<table border=1 style='width:60%;border-collapse:collapse;'> 
+    echo "<table class='table1'> 
 		<tr>
         <th>Rank</th>
 		<th>Name</th>
-		<th>AccumulatedMarks</th>
+		<th>Accumulated Marks</th>
 		
 		
 		</tr>";
@@ -27,22 +80,33 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
+        if($row['Name']==$sessions){
+        echo  "<td><b>".$ranking."</b></td>";
+		
+        echo "<td><b>" .$row['Name']. "</b></td>";
+		echo "<td><b>" .$row['accumulatedMarks']. "</b></td>";
+        $myAccumulatedMarks=$row['accumulatedMarks'];
+		$ranking++;
+        }else{
         echo  "<td>".$ranking;
 		
         echo "<td>" .$row['Name']. "</td>";
 		echo "<td>" .$row['accumulatedMarks']. "</td>";
 		$ranking++;
 		
+       
+    }
+
 		echo "</tr>";
     }
     echo "</table>";
 } 
 
 else {
-    echo "0 results";
+    echo "No entry yet.";
 }
 
-echo "<br><br><br>Nigger";
+
 $query2="SELECT scQuiz1,scQuiz2 FROM screcord WHERE Name='$sessions'";
 $result = $conn->query($query2);
 if ($result->num_rows > 0) {
@@ -84,22 +148,22 @@ $engQuiz2=$row["engQuiz2"];
     echo "0 results";
 }
 
-echo "<table border=1 style='width:60%;border-collapse:collapse;'><tr><th>Assessment Name</th><th>Marks</th></tr>";
+echo "<table class='table2'><tr><th>Assessment Name</th><th>Marks Awarded</th></tr>";
 if($scQuiz1!=''){
-    echo "<tr><td>Name of Science Quiz 1</td><td>".$scQuiz1."</td></tr>";}
+    echo "<tr><td>Physical Properties of Materials 1</td><td>".$scQuiz1."</td></tr>";}
     if($scQuiz2!=''){
-        echo "<tr><td>Name of Science Quiz 2</td><td>".$scQuiz2."</td></tr>";}
+        echo "<tr><td>All about Bacteria 1</td><td>".$scQuiz2."</td></tr>";}
         if($mathQuiz1!=''){
             echo "<tr><td>Name of Math Quiz 1</td><td>".$mathQuiz1."</td></tr>";}
             if($mathQuiz2!=''){
                 echo "<tr><td>Name of Math Quiz 2</td><td>".$mathQuiz2."</td></tr>";}
                 if($techQuiz1!=''){
-                    echo "<tr><td>Name of Technology Quiz 1</td><td>".$techQuiz1."</td></tr>";}
+                    echo "<tr><td>Technology 1</td><td>".$techQuiz1."</td></tr>";}
                     if($techQuiz2!=''){
-                        echo "<tr><td>Name of Technology Quiz 2</td><td>".$techQuiz2."</td></tr>";}
+                        echo "<tr><td>Technology 2</td><td>".$techQuiz2."</td></tr>";}
                         if($engQuiz1!=''){
                             echo "<tr><td>Name of Engineering Quiz 1</td><td>".$engQuiz1."</td></tr>";}
-                            if($engQuiz1!=''){
+                            if($engQuiz2!=''){
                                 echo "<tr><td>Name of Engineering Quiz 2</td><td>".$engQuiz2."</td></tr>";}
 
 
@@ -111,7 +175,8 @@ echo "math quiz 2 is".$mathQuiz2."<br>";
 echo "eng quiz 1 is".$engQuiz1."<br>";
 echo "eng quiz 2 is".$engQuiz2."<br>";
 */
-echo "</table>"
+echo "<tr><td><b>Total accumulated points</b></td><td>".$myAccumulatedMarks."</td>";
+echo "</table>";
 
 
 
@@ -120,3 +185,21 @@ echo "</table>"
 
 
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".table1").hide();
+    $(".table2").show();
+    
+  $("button").click(function(){
+    $(".table2").toggle();
+    $(".table1").toggle();
+
+  });
+});
+</script>
+
+<button>Alternate between Assessment Marks and Leaderboard</button>
+<br><a href="homepage.php">Click to return to homepage.</a> 
+

@@ -6,6 +6,7 @@ $user_data = check_login($conn);
 
 
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <html>
  <head>
  <style>
@@ -56,17 +57,18 @@ $user_data = check_login($conn);
                 font-size: 20px;
             }
             #test{
-                background-color: yellow;
+                background-color: yellow    ;
                 color: black;
                
-                margin-left:40%;
+                margin-left:50%;
             }
             #logout{
                 float:right;
             }
 
             fieldset{
-                margin-top: 800px;
+            position:relative;  
+            margin-top:45%;
             }
 
         </style>
@@ -131,99 +133,53 @@ $(document).ready(function(){
             <a href="engAssessmentSelect.php"><button>Quiz</button></a></center>
         </div>
 <br><br>
-        <button id="test" style="margin-top: 30px; margin-right: 740px; width: 500px;">Marks</button>
-
-        <script type="text/javascript">
- 
-    
- var quote;
- var author;
-  var settings = {
-                  "url": `https://inspiring-quotes.p.rapidapi.com/random`,
-                  "method": "GET",
-                  "timeout": 0,
-                  "async":false,
-                       
-                  
-                  "headers": {
-                  "x-rapidapi-host": "inspiring-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": "39dc5092cfmsh6d681f0d9f7e41dp1efdeejsn5e2fc15ff323"
-                  },
-                };
-                
-                $.ajax(settings).done(function (response) {
-                  console.log(response);
-                  quote = response.quote;
-                  author= response.author;
-
-                  
-                 
-                 
-                });
-
-                  
-                  console.log("testing document.writenn");
-                console.log(quote);
-                console.log(author);
-
-                document.getElementById("quotetext").innerHTML = quote;
-                document.getElementById("quoteauthor").innerHTML = author;
-           
-  
-       
-
-</script>
+        <button id="test" style="margin-top: 30px; margin-right: 500px; width: 500px;">Marks</button>
 
 
-<footer>
-<fieldset>
-    <legend>Motivational Quote</legend>
-    <p id="quotetext">Test</p><br>
-   
-    <p id="quoteauthor">Test</p>
-</fieldset>
-</footer>   
+<p id="quotetext"></p>
+<p id="quoteauthor"></p>
 
 <script type="text/javascript">
  
     
- var quote;
- var author;
-  var settings = {
-                  "url": `https://inspiring-quotes.p.rapidapi.com/random`,
-                  "method": "GET",
-                  "timeout": 0,
-                  "async":false,
-                       
+   var quote;
+   var author;
+    var settings = {
+                    "url": `https://inspiring-quotes.p.rapidapi.com/random`,
+                    "method": "GET",
+                    "timeout": 0,
+                    "async":false,
+                         
+                    
+                    "headers": {
+                    "x-rapidapi-host": "inspiring-quotes.p.rapidapi.com",
+                      "x-rapidapi-key": "39dc5092cfmsh6d681f0d9f7e41dp1efdeejsn5e2fc15ff323"
+                    },
+                  };
                   
-                  "headers": {
-                  "x-rapidapi-host": "inspiring-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": "39dc5092cfmsh6d681f0d9f7e41dp1efdeejsn5e2fc15ff323"
-                  },
-                };
-                
-                $.ajax(settings).done(function (response) {
-                  console.log(response);
-                  quote = response.quote;
-                  author= response.author;
+                  $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    quote = response.quote;
+                    author= response.author;
 
-                  
-                 
-                 
-                });
+                    
+                   
+                   
+                  });
 
-                  
-                  console.log("testing document.writenn");
-                console.log(quote);
-                console.log(author);
+                    
+                    console.log("testing document.writennn");
+                  console.log(quote);
+                  console.log(author);
 
-                document.getElementById("quotetext").innerHTML = quote;
-                document.getElementById("quoteauthor").innerHTML = author;
-           
+                  document.getElementById("quotetext").innerHTML = quote;
+                  document.getElementById("quoteauthor").innerHTML = author;
+             
+	
+         
   
-       
-
 </script>
+
 
 
 

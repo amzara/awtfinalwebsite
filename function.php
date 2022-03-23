@@ -17,12 +17,16 @@ function check_login($conn)
 		}
 	}
 	else{
-	header(studentlogin.php);
+	
 	}
 
-	//redirect to login
+	
 
 
 }
+
+
+
+
 
 ?>

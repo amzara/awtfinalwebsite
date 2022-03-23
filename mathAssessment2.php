@@ -6,10 +6,10 @@ $user_data = check_login($conn);
 ?>
 Hello, <?php echo $user_data['Name']; ?>.
 <h1>Instructions</h1>
-<p>Fill in the answer. Select the correct answer and submit it. 
-Extra features : Show correct answer for every question + marks after assessment + hide submit button after user complete(so cannot do multiple times)maybe use jquery on button to just make it disappear. </p>
+<h3>Addition and Subtraction for Kids</h3>
+<p>Fill in the answer. Select the correct answer and submit it. </p>
 
-<h3>Assesstment 2</h3>
+
 <form method="POST">
     <label>Question 1: 15 + 16 = </label><br>
     <input type="number" name="q1">
@@ -34,10 +34,7 @@ $q2=$_POST["q2"];
 $q3=$_POST["q3"];
 $q4=$_POST["q4"];
 
-echo $q1;
-echo $q2;
-echo $q3;
-echo $q4;
+
 
 if($q1==31){
 $marks+=25;
@@ -66,8 +63,10 @@ $marks+=25;
 else{
 echo "The correct answer for question 4 is 3";
 }
-    
-echo "Total marks received is ".$marks;
+
+echo "<br>Score:".$correctans."/4";
+echo "<br>Total marks received is ".$marks;
+
 
 
 

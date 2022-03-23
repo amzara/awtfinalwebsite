@@ -38,17 +38,28 @@
             .drop:hover .dropbutton {
                 background-color: #3e8e41;
             }
+            input[type="submit"], input[type="reset"]{
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover, input[type="reset"]:hover{
+                background-color: #6ab86e;
+            }
+            fieldset{
+                margin-left: 100px;
+                margin-right: 100px;
+            }
         </style>
     </head>
     <body>
         <header>
-        <div class="drop">
-        <button class="dropbutton">Login</button>
-        <div class="drop-list">
-            <a href="adminlogin.php">Admin Login</a>
-            <a href="studentlogin.php">Student Login</a>
-        </div>
+        <h1>STEM Interactive Club</h1>
         </header>
+        <br>
 
         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <?php
@@ -69,6 +80,7 @@
 
                 if($row==1){
                     echo "<script>alert('Access Granted! Welcome $name');</script>";
+                    header ('location: adminpage.php');
                 }
                 else{
                     echo "<script>alert('Invalid password or username');</script>";

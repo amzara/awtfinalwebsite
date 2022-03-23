@@ -35,18 +35,16 @@ Extra features : Show correct answer for every question + marks after assessment
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 $marks=0;
+$correctans=0;
 $q1=$_POST["q1"];
 $q2=$_POST["q2"];
 $q3=$_POST["q3"];
 $q4=$_POST["q4"];
 
-echo $q1;
-echo $q2;
-echo $q3;
-echo $q4;
 
 if($q1=="c"){
 $marks+=25;
+$correctans+=1;
 }
 else{
 echo "The correct answer for question 1 is 10";
@@ -54,6 +52,7 @@ echo "The correct answer for question 1 is 10";
 
 if($q2=="b"){
 $marks+=25;
+$correctans+=1;
 }
 else{
 echo "The correct answer for question 2 is 280";
@@ -61,6 +60,7 @@ echo "The correct answer for question 2 is 280";
 
 if($q3=="a"){
 $marks+=25;
+$correctans+=1;
 }
 else{
 echo "The correct answer for question 3 is 6";
@@ -68,11 +68,13 @@ echo "The correct answer for question 3 is 6";
 
 if($q4=="c"){
 $marks+=25;
+$correctans+=1;
 }
 else{
 echo "The correct answer for question 4 is 132";
 }
-    
+echo "<br>Score:".$correctans."/4";
+echo "<br>Total marks received is ".$marks;
 
 
 

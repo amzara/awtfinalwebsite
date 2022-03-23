@@ -15,5 +15,5 @@
         <fieldset>
             <legend>View</legend>
             <a href="viewmarks.php"><button>View Your Assessment Marks</button></a>
-            <a href="mathAssessment2.php"><button>View Student Leaderboard</button></a>
+            <a href="searchSubject.php"><button>Search for a subject</button></a>
         </fieldset>
